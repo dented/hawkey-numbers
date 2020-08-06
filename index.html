@@ -66,7 +66,7 @@
       }
       @media(min-width: 760px) {
         #main-number {
-          font-size: 18em !important;
+          font-size: 15em !important;
           margin: 0 !important;
           line-height: 1;
         }
@@ -87,7 +87,7 @@
   </nav>
   <div class="controls">
     <a href="#" class="btn btn-danger btn-lg text-white p-3" id="start-random"><i class="fas fa-play fa-3x"></i></a>
-    <a href="#" class="btn btn-danger btn-lg text-white p-3 d-none" id="pause-random"><i class="fas fa-pause fa-3x"></i></a>
+    <a href="#" class="btn btn-danger btn-lg text-white p-3 d-none" id="stop-random"><i class="fas fa-stop fa-3x"></i></a>
     <a href="#" class="btn btn-light btn-lg p-3" data-toggle="modal" data-target="#modal-settings"><i class="fas fa-cogs fa-3x"></i></a>
   </div>
 
@@ -95,7 +95,7 @@
     <div class="row d-flex justify-content-center align-middle">
       <div class="col-12">
         <div id="main-background" class="h-90vh w-100 d-flex justify-content-center align-items-center">
-          <div id="main-number" class="align-middle">1</div>
+          <div id="main-number" class="align-middle">Are you ready?</div>
         </div>
       </div>
     </div>
@@ -156,12 +156,13 @@
     jQuery(function($) {
 
       const $startBtn = $('#start-random');
-      const $pauseBtn = $('#pause-random');
+      const $stopBtn = $('#stop-random');
       const $resetBtn = $('#reset-random');
       const $settingForm = $('#form-setting');
       const $numberToChange = $('#main-number');
       const $bgToChange = $('#main-background');
       const $timer = $('#timer');
+      const $countdown = $('#countdown');
       let howLongToWait = 1000;
       let shouldRun = true;
       let minimum = 1;
@@ -183,7 +184,9 @@
         $settingForm.find('#maximum').val('10');
         $settingForm.find('#wait').val('1000');
         $startBtn.removeClass('d-none');
-        $pauseBtn.addClass('d-none');
+        $stopBtn.addClass('d-none');
+        $numberToChange.addClass('d-none');
+        $countdown.removeClass('d-none');
         $timer.text('0');
         timer = 0;
 
@@ -191,17 +194,32 @@
         shouldRun = false;
       }
 
-      $startBtn.on('click', function(evt) {
-        evt.preventDefault();
-        shouldRun = true;
+      async function startCountdown() {
         $timer.text('0');
         $startBtn.addClass('d-none');
-        $pauseBtn.removeClass('d-none');
+        $stopBtn.removeClass('d-none');
         minimum = $settingForm.find('#minimum').val();
         maximum = $settingForm.find('#maximum').val();
         howLongToWait = $settingForm.find('#wait').val();
+
+        $numberToChange.text('Are you ready?');
+        await sleep(1000);
+        $numberToChange.text('3');
+        await sleep(1000);
+        $numberToChange.text('2');
+        await sleep(1000);
+        $numberToChange.text('1');
+        await sleep(1000);
+        $numberToChange.text('Go');
+        await sleep(1000);
         runTimer();
         startNumbers();
+      }
+
+      $startBtn.on('click', function(evt) {
+        evt.preventDefault();
+        shouldRun = true;
+        startCountdown();
       });
 
       $resetBtn.on('click', function(evt) {
@@ -209,11 +227,12 @@
         resetAll();
       });
 
-      $pauseBtn.on('click', function(evt) {
+      $stopBtn.on('click', function(evt) {
         evt.preventDefault();
         shouldRun = false;
         $startBtn.removeClass('d-none');
-        $pauseBtn.addClass('d-none');
+        $stopBtn.addClass('d-none');
+        timer = 0;
       });
 
       async function startNumbers() {
