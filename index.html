@@ -24,8 +24,8 @@
 
     <!-- Custom styles for this template -->
     <style>
-      .h-100vh {
-        height: 100vh !important;
+      .h-90vh {
+        height: 90vh !important;
       }
       .bottom-1 {
         bottom: 1em;
@@ -35,6 +35,9 @@
       }
       .top-0 {
         top: 0;
+      }
+      .top-1 {
+        top: 1em;
       }
       @media(min-width: 370px) {
         #main-number {
@@ -61,22 +64,22 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-danger position-absolute top-0">
+  <nav class="navbar navbar-dark bg-danger position-absolute top-0">
     <a class="navbar-brand" href="/">Team Hawkey</a>
   </nav>
+  <div class="controls position-absolute  top-1 right-1">
+    <a href="#" class="btn btn-danger btn-lg text-white" id="start-random"><i class="fas fa-play"></i></a>
+    <a href="#" class="btn btn-danger btn-lg text-white d-none" id="pause-random"><i class="fas fa-pause"></i></a>
+    <a href="#" class="btn btn-light btn-lg" data-toggle="modal" data-target="#modal-settings">
+      <i class="fas fa-cogs"></i>
+    </a>
+  </div>
 
   <div class="container-fluid">
     <div class="row d-flex justify-content-center align-middle">
       <div class="col-12">
-        <div id="main-background" class="h-100vh w-100 d-flex justify-content-center align-items-center">
+        <div id="main-background" class="h-90vh w-100 d-flex justify-content-center align-items-center">
           <div id="main-number" class="align-middle">1</div>
-          <div class="controls position-absolute bottom-1 right-1">
-            <a href="#" class="btn btn-danger btn-lg text-white" id="start-random"><i class="fas fa-play"></i></a>
-            <a href="#" class="btn btn-danger btn-lg text-white d-none" id="pause-random"><i class="fas fa-pause"></i></a>
-            <a href="#" class="btn btn-light btn-lg" data-toggle="modal" data-target="#modal-settings">
-              <i class="fas fa-cogs"></i>
-            </a>
-          </div>
         </div>
       </div>
     </div>
