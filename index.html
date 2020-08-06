@@ -95,7 +95,7 @@
     <div class="row d-flex justify-content-center align-middle">
       <div class="col-12">
         <div id="main-background" class="h-90vh w-100 d-flex justify-content-center align-items-center">
-          <div id="main-number" class="align-middle">Are you ready?</div>
+          <div id="main-number" class="align-middle text-center">Are you ready?</div>
         </div>
       </div>
     </div>
@@ -202,15 +202,13 @@
         maximum = $settingForm.find('#maximum').val();
         howLongToWait = $settingForm.find('#wait').val();
 
-        $numberToChange.text('Are you ready?');
+        $numberToChange.text('3...');
         await sleep(1000);
-        $numberToChange.text('3');
+        $numberToChange.text('2...');
         await sleep(1000);
-        $numberToChange.text('2');
+        $numberToChange.text('1...');
         await sleep(1000);
-        $numberToChange.text('1');
-        await sleep(1000);
-        $numberToChange.text('Go');
+        $numberToChange.text('Go!!!');
         await sleep(1000);
         runTimer();
         startNumbers();
