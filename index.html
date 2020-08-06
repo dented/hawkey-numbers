@@ -39,6 +39,17 @@
       .top-1 {
         top: 1em;
       }
+      .controls {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        z-index: 1;
+      }
+      .navbar {
+        position: absolute;
+        top: 1;
+        z-index: 1;;
+      }
       @media(min-width: 370px) {
         #main-number {
           font-size: 10em !important;
@@ -64,10 +75,10 @@
 
 <body>
 
-  <nav class="navbar navbar-dark bg-danger position-absolute top-0">
-    <a class="navbar-brand" href="/">Team Hawkey</a>
+  <nav class="navbar ">
+    <a class="navbar-brand text-danger" href="/">Team Hawkey</a>
   </nav>
-  <div class="controls position-absolute  top-1 right-1">
+  <div class="controls">
     <a href="#" class="btn btn-danger btn-lg text-white" id="start-random"><i class="fas fa-play"></i></a>
     <a href="#" class="btn btn-danger btn-lg text-white d-none" id="pause-random"><i class="fas fa-pause"></i></a>
     <a href="#" class="btn btn-light btn-lg" data-toggle="modal" data-target="#modal-settings">
