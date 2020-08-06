@@ -24,6 +24,10 @@
 
     <!-- Custom styles for this template -->
     <style>
+      body {
+        background-color: black;
+        color: #ccc;
+      }
       .h-90vh {
         height: 90vh !important;
       }
@@ -48,7 +52,7 @@
       .navbar {
         position: absolute;
         top: 1;
-        z-index: 1;;
+        z-index: 1;
       }
       .display-5 {
         font-size: 1.2em;
@@ -82,11 +86,9 @@
     <a class="navbar-brand text-danger" href="/">Team Hawkey</a>
   </nav>
   <div class="controls">
-    <a href="#" class="btn btn-danger btn-lg text-white" id="start-random"><i class="fas fa-play"></i></a>
-    <a href="#" class="btn btn-danger btn-lg text-white d-none" id="pause-random"><i class="fas fa-pause"></i></a>
-    <a href="#" class="btn btn-light btn-lg" data-toggle="modal" data-target="#modal-settings">
-      <i class="fas fa-cogs"></i>
-    </a>
+    <a href="#" class="btn btn-danger btn-lg text-white p-3" id="start-random"><i class="fas fa-play fa-3x"></i></a>
+    <a href="#" class="btn btn-danger btn-lg text-white p-3 d-none" id="pause-random"><i class="fas fa-pause fa-3x"></i></a>
+    <a href="#" class="btn btn-light btn-lg p-3" data-toggle="modal" data-target="#modal-settings"><i class="fas fa-cogs fa-3x"></i></a>
   </div>
 
   <div class="container-fluid">
@@ -145,7 +147,7 @@
   </div>
 
   <div class="position-absolute bottom-1 right-1 z-index-1">
-    <strong class="display-5 text-bold text-dark">Timer: <span id="timer" class="">0</span> seconds</strong>
+    <strong class="display-5">Timer: <span id="timer" class="">0</span> seconds</strong>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
