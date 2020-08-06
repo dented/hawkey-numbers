@@ -170,7 +170,6 @@
       const $countdown = $('#countdown');
       const $audioCountdown = document.getElementById('audio-countdown')
       const $audioCrowd = document.getElementById('audio-crowd');
-      $audioCrowd.volume = 0.5;
       let howLongToWait = 1000;
       let shouldRun = true;
       let minimum = 1;
@@ -195,6 +194,7 @@
         $stopBtn.addClass('d-none');
         $numberToChange.text('Are you ready?');
         $timer.text('0');
+        $audioCrowd.stop();
         timer = 0;
 
         howLongToWait = 1000;
@@ -224,6 +224,7 @@
         await sleep(1000);
         runTimer();
         startNumbers();
+        $audioCountdown.stop();
         $audioCrowd.play();
       }
 
@@ -243,6 +244,7 @@
         shouldRun = false;
         $startBtn.removeClass('d-none');
         $stopBtn.addClass('d-none');
+        $audioCrowd.stop();
         timer = 0;
       });
 
