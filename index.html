@@ -151,9 +151,6 @@
   <audio id="audio-countdown" class="d-none" preload="auto">
     <source src="https://cw-hk-files.s3.ap-east-1.amazonaws.com/hawkey/countdown.mp3" type="audio/mpeg">
   </audio>
-  <audio id="audio-crowd" class="d-none" loop preload="auto">
-    <source src="https://cw-hk-files.s3.ap-east-1.amazonaws.com/hawkey/crowd.mp3" type="audio/mpeg">
-  </audio>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
@@ -169,7 +166,6 @@
       const $timer = $('#timer');
       const $countdown = $('#countdown');
       const $audioCountdown = document.getElementById('audio-countdown')
-      const $audioCrowd = document.getElementById('audio-crowd');
       let howLongToWait = 1000;
       let shouldRun = true;
       let minimum = 1;
@@ -194,7 +190,6 @@
         $stopBtn.addClass('d-none');
         $numberToChange.text('Are you ready?');
         $timer.text('0');
-        $audioCrowd.stop();
         timer = 0;
 
         howLongToWait = 1000;
@@ -225,7 +220,6 @@
         runTimer();
         startNumbers();
         $audioCountdown.stop();
-        $audioCrowd.play();
       }
 
       $startBtn.on('click', function(evt) {
@@ -244,7 +238,6 @@
         shouldRun = false;
         $startBtn.removeClass('d-none');
         $stopBtn.addClass('d-none');
-        $audioCrowd.stop();
         timer = 0;
       });
 
