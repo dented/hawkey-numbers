@@ -110,32 +110,31 @@
             <div class="h5 modal-title" id="exampleModalLabel">Settings</div>
           </div>
           <div class="modal-body">
-              <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="minimum" class="col-form-label">Minimum:</label>
-                    <input type="number" class="form-control" id="minimum" min="0" value="1">
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="maximum" class="col-form-label">Maximum:</label>
-                    <input type="number" class="form-control" id="maximum" min="0" value="10">
-                  </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="minimum" class="col-form-label">Minimum:</label>
+                  <input type="number" class="form-control" id="minimum" min="0" value="1">
                 </div>
               </div>
-              <div class="row">
-                <div class="col-12">
-                  <select id="wait" class="custom-select">
-                    <option selected value="1000">1 second</option>
-                    <option value="2000">2 seconds</option>
-                    <option value="3000">3 seconds</option>
-                    <option value="4000">4 seconds</option>
-                    <option value="5000">5 seconds</option>
-                  </select>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="maximum" class="col-form-label">Maximum:</label>
+                  <input type="number" class="form-control" id="maximum" min="0" value="10">
                 </div>
               </div>
-
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <select id="wait" class="custom-select">
+                  <option selected value="1000">1 second</option>
+                  <option value="2000">2 seconds</option>
+                  <option value="3000">3 seconds</option>
+                  <option value="4000">4 seconds</option>
+                  <option value="5000">5 seconds</option>
+                </select>
+              </div>
+            </div>
           </div>
           <div class="modal-footer border-0">
             <button type="button" class="btn btn-light btn-lg" id="reset-random">Reset</a>
@@ -149,6 +148,12 @@
   <div class="position-absolute bottom-1 right-1 z-index-1">
     <strong class="display-5">Timer: <span id="timer" class="">0</span> seconds</strong>
   </div>
+  <audio id="audio-countdown" class="d-none">
+    <source src="https://cw-hk-files.s3.ap-east-1.amazonaws.com/hawkey/countdown.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="audio-crowd" class="d-none" loop>
+    <source src="https://cw-hk-files.s3.ap-east-1.amazonaws.com/hawkey/crowd.mp3" type="audio/mpeg">
+  </audio>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
@@ -163,6 +168,9 @@
       const $bgToChange = $('#main-background');
       const $timer = $('#timer');
       const $countdown = $('#countdown');
+      const $audioCountdown = document.getElementById('audio-countdown')
+      const $audioCrowd = document.getElementById('audio-crowd');
+      $audioCrowd.volume = 0.5;
       let howLongToWait = 1000;
       let shouldRun = true;
       let minimum = 1;
@@ -200,17 +208,23 @@
         minimum = $settingForm.find('#minimum').val();
         maximum = $settingForm.find('#maximum').val();
         howLongToWait = $settingForm.find('#wait').val();
+        $audioCountdown.play();
 
-        $numberToChange.text('3...');
+        $numberToChange.text('5');
         await sleep(1000);
-        $numberToChange.text('2...');
+        $numberToChange.text('4');
         await sleep(1000);
-        $numberToChange.text('1...');
+        $numberToChange.text('3');
         await sleep(1000);
-        $numberToChange.text('Go!!!');
+        $numberToChange.text('2');
+        await sleep(1000);
+        $numberToChange.text('1');
+        await sleep(1000);
+        $numberToChange.text('Go!');
         await sleep(1000);
         runTimer();
         startNumbers();
+        $audioCrowd.play();
       }
 
       $startBtn.on('click', function(evt) {
