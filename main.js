@@ -82,6 +82,11 @@ jQuery(function($) {
     timer = 0;
   });
 
+  $('#bg-options .form-check-input').on('change', function(evt) {
+    const $body = $(document.body);
+    $body.removeClass().addClass($(this).val());
+  });
+
   async function startNumbers() {
     while(shouldRun) {
       $numberToChange.text(getRandomInt(minimum, maximum));
