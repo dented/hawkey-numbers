@@ -61,22 +61,8 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger position-absolute top-0">
     <a class="navbar-brand" href="/">Team Hawkey</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbar-main">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-settings">
-            <i class="fas fa-cogs"></i> Settings
-          </a>
-        </li>
-
-      </ul>
-    </div>
   </nav>
 
   <div class="container-fluid">
@@ -87,7 +73,9 @@
           <div class="controls position-absolute bottom-1 right-1">
             <a href="#" class="btn btn-danger btn-lg text-white" id="start-random"><i class="fas fa-play"></i></a>
             <a href="#" class="btn btn-danger btn-lg text-white d-none" id="pause-random"><i class="fas fa-pause"></i></a>
-            <a href="#" class="btn btn-light btn-lg" id="reset-random">Reset</a>
+            <a href="#" class="btn btn-light btn-lg" data-toggle="modal" data-target="#modal-settings">
+              <i class="fas fa-cogs"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -131,6 +119,7 @@
 
           </div>
           <div class="modal-footer border-0">
+            <button type="button" class="btn btn-light btn-lg" id="reset-random">Reset</a>
             <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
           </div>
         </form>
