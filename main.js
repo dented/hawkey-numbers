@@ -7,7 +7,6 @@ jQuery(function($) {
   const $numberToChange = $('#main-number');
   const $bgToChange = $('#main-background');
   const $timer = $('#timer');
-  const $countdown = $('#countdown');
   const $audioCountdown = document.getElementById('audio-countdown')
   let howLongToWait = 1000;
   let shouldRun = true;
@@ -62,7 +61,6 @@ jQuery(function($) {
     await sleep(1000);
     runTimer();
     startNumbers();
-    $audioCountdown.stop();
   }
 
   $startBtn.on('click', function(evt) {
